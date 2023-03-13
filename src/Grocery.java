@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Grocery {
     String name;
     int amount;
@@ -21,28 +23,27 @@ public class Grocery {
         this.amount = this.amount - amount;
     }
 
-
     public String toString() {
         return
                 "product: " + name + '\t' +
                 "amount:" + amount;
     }
-    public static void printCabinetContents(Grocery[] cabinet) {
+    public static void printCabinetContents(List<Grocery> cabinet) {
         for (Grocery grocery : cabinet
         ) {
             System.out.println(grocery.toString());
         }
         System.out.println("\n");
     }
-    public static void addToTheCabinet(Grocery[] cabinet) {
+    public static void addToTheCabinet(List<Grocery> cabinet) {
         System.out.println("What grocery would you like to add to?");
-        String chosen = ScannerClass.readString();
+        String chosen = Scanner.readString();
         System.out.println("How much units of " + chosen + " would you like to add?");
-        int amount = ScannerClass.readNumber();
+        int amount = Scanner.readNumber();
 
         for (Grocery grocery : cabinet
         ) {
-            if (grocery.getName().equals(chosen)) {
+            if (grocery.getName().equalsIgnoreCase(chosen)) {
                 grocery.increaseQuantity(amount);
             }
         }

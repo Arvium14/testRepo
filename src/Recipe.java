@@ -1,4 +1,4 @@
-
+import java.util.List;
 
 public abstract class Recipe {
 
@@ -32,17 +32,17 @@ public abstract class Recipe {
         Thread.sleep(1000);
         System.out.println("\nEnjoy your " + getName() + "!");
     }
-    public static void printRecipeList(Recipe[] recipes) {
+    public static void printRecipeList(List<Recipe> recipes) {
         for (Recipe recipe : recipes
         ) {
             recipe.listOfIngredients();
         }
     }
-    public static void cookADish(Recipe[] recipes) throws InterruptedException {
+    public static void cookADish(List<Recipe> recipes) throws InterruptedException {
         System.out.println("What would you like to cook?");
-        String dishToCook = ScannerClass.readString();
+        String dishToCook = Scanner.readString();
         for (Recipe recipe : recipes) {
-            if (recipe.getName().equals(dishToCook)) {
+            if (recipe.getName().equalsIgnoreCase(dishToCook)) {
                 recipe.cookIt();
                 dishFound = true;
             }
