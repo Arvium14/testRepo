@@ -1,0 +1,8 @@
+Build a grocery cupboard that allows users to add groceries and there amounts to a grocery cupboard.
+Each grocery must inherit a class of type Grocery.
+You get to decided how groceries are added and to which groceries can be added.
+
+Next you need to build a recipe book that has a minimum grocery’s required list as well as a
+method to follow to prepare the recipe.
+All of your recipes need to inherit an abstract class called Recipe.
+You get to decide what happens if there is not enough of a particular grocery to complete the recipe
