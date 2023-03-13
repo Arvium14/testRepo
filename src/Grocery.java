@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Grocery {
+public class Grocery{
     String name;
     int amount;
     //TODO this is a keyword you can use to make an easy todo list in your IDE
@@ -47,5 +47,15 @@ public class Grocery {
                 grocery.increaseQuantity(amount);
             }
         }
+    }
+    public static Grocery addGrocery(){
+        System.out.println("What would you like to add?");
+        String customName = Scanner.readString();
+        System.out.println("How many units of " + customName + " would you like to add?");
+        int amount = Scanner.readNumber();
+        Grocery customGrocery = new Grocery(customName, amount);
+
+        System.out.println("New item added!");
+        return  customGrocery;
     }
 }

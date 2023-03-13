@@ -1,17 +1,17 @@
+import java.util.Arrays;
 import java.util.List;
 
-public abstract class Recipe {
-
+public class Recipe {
     String name;
-
     static boolean dishFound = false;
 
-    public abstract void listOfIngredients();
-    Grocery[] groceries;
+    //public abstract void listOfIngredients(){};
+    static Grocery[] groceries;
     int[] amounts;
+
     Recipe(String name, int amountOfIngredients) {
         this.name = name;
-        this.groceries = new Grocery[amountOfIngredients];
+        groceries = new Grocery[amountOfIngredients];
         this.amounts = new int[amountOfIngredients];
     }
 
@@ -22,7 +22,7 @@ public abstract class Recipe {
     public void cookIt() throws InterruptedException {
 
         for (int i = 0; i < groceries.length; i++) {
-            if (groceries[i].amount < amounts[i]){
+            if (groceries[i].amount < amounts[i]) {
                 System.out.println("Insufficient ingredients!");
                 break;
             }
@@ -32,12 +32,25 @@ public abstract class Recipe {
         Thread.sleep(1000);
         System.out.println("\nEnjoy your " + getName() + "!");
     }
+
     public static void printRecipeList(List<Recipe> recipes) {
-        for (Recipe recipe : recipes
-        ) {
-            recipe.listOfIngredients();
+        for (int i = 0; i < recipes.size(); i++) {
+            System.out.println(recipes.get(i).getName());
         }
     }
+
+    public static void printUsableRecipes(List<Recipe> recipes) {
+        for (int i = 0; i < recipes.size(); i++) {
+
+/*            System.out.println(groceries[i].amount);
+            System.out.println(recipes.get(i).amounts[i]);*/
+
+            if (groceries[i].amount > recipes.get(i).amounts[i]) {
+                System.out.println(recipes.get(i).name);
+            }
+        }
+    }
+
     public static void cookADish(List<Recipe> recipes) throws InterruptedException {
         System.out.println("What would you like to cook?");
         String dishToCook = Scanner.readString();
@@ -45,10 +58,20 @@ public abstract class Recipe {
             if (recipe.getName().equalsIgnoreCase(dishToCook)) {
                 recipe.cookIt();
                 dishFound = true;
-            }
-            else if(dishFound = false) {
+            } else if (dishFound = false) {
                 System.out.println("That dish is not available yet!");
             }
         }
+    }
+
+    public static Recipe addRecipe() {
+        System.out.println("What would you like to add?");
+        String customName = Scanner.readString();
+        System.out.println("How many units of " + customName + " would you like to add?");
+        int amount = Scanner.readNumber();
+        Recipe customRecipe = new Recipe(customName, amount);
+
+        System.out.println("New item added!");
+        return customRecipe;
     }
 }
