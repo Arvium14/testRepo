@@ -1,4 +1,4 @@
-public class Scanner {
+public class MyScanner {
 
     public static String readString() {
         java.util.Scanner in = new java.util.Scanner(System.in);

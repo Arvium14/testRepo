@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
+    static List<Grocery> cabinet;
     public static void main(String[] args) throws InterruptedException {
         boolean cookingOrShopping = true;
 
@@ -13,7 +15,7 @@ public class Main {
         Recipe scrambledEggs = new ScrambledEggs("scrambled eggs", 2, eggs, 2, butter, 1);
         Recipe toast = new Toast("toast", 2, bread, 2, butter, 1);
 
-        List<Grocery> cabinet = new ArrayList<>();
+        cabinet = new ArrayList<>();
         List<Recipe> recipes = new ArrayList<>();
 
         cabinet.add(bread);
@@ -23,11 +25,9 @@ public class Main {
         recipes.add(scrambledEggs);
         recipes.add(toast);
 
-
         while (cookingOrShopping) {
 
             System.out.println("""
-
                     What would you like to do?
                     Press 1 for a list of saved recipes
                     Press 2 to see the contents of the cupboard
@@ -38,15 +38,15 @@ public class Main {
                     Press 7 for a list of cookable recipes
                     Press 8 to exit""");
 
-            int answer = Scanner.readNumber();
+            int answer = MyScanner.readNumber();
 
             switch (answer) {
-                case 1 -> Recipe.printRecipeList(recipes, cabinet);
+                case 1 -> Recipe.printRecipeList(recipes);
                 case 2 -> Grocery.printCabinetContents(cabinet);
                 case 3 -> Grocery.addToTheCabinet(cabinet);
                 case 4 -> Recipe.cookADish(recipes);
                 case 5 -> cabinet.add(Grocery.addGrocery());
-//                case 6 -> AddRecipes
+                case 6 -> recipes.add(Controller.addRecipe());
                 case 7 -> Recipe.printUsableRecipes(recipes);
                 case 8 -> cookingOrShopping = false;
             }

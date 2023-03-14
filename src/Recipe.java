@@ -3,16 +3,20 @@ import java.util.List;
 
 public class Recipe {
     String name;
-    static boolean dishFound = false;
-
-    //public abstract void listOfIngredients(){};
     Grocery[] groceries;
     int[] amounts;
+    static boolean dishFound = false;
 
-    Recipe(String name, int amountOfIngredients) {
+    Recipe(String name, Grocery[] groceries, int[] amounts) {
         this.name = name;
-        groceries = new Grocery[amountOfIngredients];
-        this.amounts = new int[amountOfIngredients];
+        this.groceries = groceries;
+        this.amounts = amounts;
+    }
+
+    Recipe(String name, int amount) {
+        this.name = name;
+        groceries = new Grocery[amount];
+        this.amounts = new int[amount];
     }
 
     public String getName() {
@@ -33,22 +37,26 @@ public class Recipe {
         System.out.println("\nEnjoy your " + getName() + "!");
     }
 
-    public static void printRecipeList(List<Recipe> recipes, List<Grocery> groceries) {
+    public static void printRecipeList(List<Recipe> recipes) {
+        for (Recipe recipe: recipes
+             ) {
+            System.out.println(recipe.name);
+            Grocery[] recipeGroceries = recipe.groceries;
+            int[] groceryAmounts = recipe.amounts;
 
-        for (int i = 0; i < recipes.size(); i++) {
+            for (int i = 0; i < groceryAmounts.length; i++) {
+                System.out.println(recipeGroceries[i].name + ": " + groceryAmounts[i]);
+            }
+        }
+
+/*        for (int i = 0; i < recipes.size(); i++) {
             System.out.println("For " + recipes.get(i).getName() + " you need:");
             for (Grocery grocery: recipes.get(i).groceries
                  ) {
-                System.out.println(grocery.name + ": " /*+ recipes.get(i).amounts[i]*/);
+                System.out.println(grocery.name + ": " *//*+ recipes.get(i).amounts[i]*//*);
                 System.out.println(recipes.get(i).amounts[i]);
             }
-
-
-/*            for (int j = 0; j < recipes.get(i).groceries.length; j++) {
-
-
-            }*/
-        }
+        }*/
     }
 
     public static void printUsableRecipes(List<Recipe> recipes) {
@@ -65,7 +73,7 @@ public class Recipe {
 
     public static void cookADish(List<Recipe> recipes) throws InterruptedException {
         System.out.println("What would you like to cook?");
-        String dishToCook = Scanner.readString();
+        String dishToCook = MyScanner.readString();
         for (Recipe recipe : recipes) {
             if (recipe.getName().equalsIgnoreCase(dishToCook)) {
                 recipe.cookIt();
@@ -78,9 +86,9 @@ public class Recipe {
 
     public static Recipe addRecipe() {
         System.out.println("What would you like to add?");
-        String customName = Scanner.readString();
+        String customName = MyScanner.readString();
         System.out.println("How many units of " + customName + " would you like to add?");
-        int amount = Scanner.readNumber();
+        int amount = MyScanner.readNumber();
         Recipe customRecipe = new Recipe(customName, amount);
 
         System.out.println("New item added!");

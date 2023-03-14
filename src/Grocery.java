@@ -37,9 +37,9 @@ public class Grocery{
     }
     public static void addToTheCabinet(List<Grocery> cabinet) {
         System.out.println("What grocery would you like to add to?");
-        String chosen = Scanner.readString();
+        String chosen = MyScanner.readString();
         System.out.println("How much units of " + chosen + " would you like to add?");
-        int amount = Scanner.readNumber();
+        int amount = MyScanner.readNumber();
 
         for (Grocery grocery : cabinet
         ) {
@@ -50,9 +50,9 @@ public class Grocery{
     }
     public static Grocery addGrocery(){
         System.out.println("What would you like to add?");
-        String customName = Scanner.readString();
+        String customName = MyScanner.readString();
         System.out.println("How many units of " + customName + " would you like to add?");
-        int amount = Scanner.readNumber();
+        int amount = MyScanner.readNumber();
         Grocery customGrocery = new Grocery(customName, amount);
 
         System.out.println("New item added!");
