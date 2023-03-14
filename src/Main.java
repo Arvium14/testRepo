@@ -11,7 +11,7 @@ public class Main {
         Grocery eggs = new Eggs("eggs", 24);
 
         Recipe scrambledEggs = new ScrambledEggs("scrambled eggs", 2, eggs, 2, butter, 1);
-        Recipe toast = new Toast("toast", 2, bread, 2, butter, 2);
+        Recipe toast = new Toast("toast", 2, bread, 2, butter, 1);
 
         List<Grocery> cabinet = new ArrayList<>();
         List<Recipe> recipes = new ArrayList<>();
@@ -41,7 +41,7 @@ public class Main {
             int answer = Scanner.readNumber();
 
             switch (answer) {
-                case 1 -> Recipe.printRecipeList(recipes);
+                case 1 -> Recipe.printRecipeList(recipes, cabinet);
                 case 2 -> Grocery.printCabinetContents(cabinet);
                 case 3 -> Grocery.addToTheCabinet(cabinet);
                 case 4 -> Recipe.cookADish(recipes);

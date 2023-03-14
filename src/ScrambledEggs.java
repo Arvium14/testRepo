@@ -9,7 +9,7 @@ public class ScrambledEggs extends Recipe {
         amounts[0] = amount1;
         amounts[1] = amount2;
     }
-
+    @Deprecated
     public void listOfIngredients() {
         System.out.println("For scrambled eggs, you need: \nEggs: 2 \nButter: 1\n");
     }

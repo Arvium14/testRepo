@@ -1,4 +1,4 @@
-public class Butter extends Grocery{
+public class Butter extends Grocery {
     public Butter(String name, int amount) {
         super(name, amount);
     }

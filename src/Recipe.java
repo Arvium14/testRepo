@@ -6,7 +6,7 @@ public class Recipe {
     static boolean dishFound = false;
 
     //public abstract void listOfIngredients(){};
-    static Grocery[] groceries;
+    Grocery[] groceries;
     int[] amounts;
 
     Recipe(String name, int amountOfIngredients) {
@@ -19,7 +19,7 @@ public class Recipe {
         return name;
     }
 
-    public void cookIt() throws InterruptedException {
+    private void cookIt() throws InterruptedException {
 
         for (int i = 0; i < groceries.length; i++) {
             if (groceries[i].amount < amounts[i]) {
@@ -33,9 +33,21 @@ public class Recipe {
         System.out.println("\nEnjoy your " + getName() + "!");
     }
 
-    public static void printRecipeList(List<Recipe> recipes) {
+    public static void printRecipeList(List<Recipe> recipes, List<Grocery> groceries) {
+
         for (int i = 0; i < recipes.size(); i++) {
-            System.out.println(recipes.get(i).getName());
+            System.out.println("For " + recipes.get(i).getName() + " you need:");
+            for (Grocery grocery: recipes.get(i).groceries
+                 ) {
+                System.out.println(grocery.name + ": " /*+ recipes.get(i).amounts[i]*/);
+                System.out.println(recipes.get(i).amounts[i]);
+            }
+
+
+/*            for (int j = 0; j < recipes.get(i).groceries.length; j++) {
+
+
+            }*/
         }
     }
 
@@ -45,7 +57,7 @@ public class Recipe {
 /*            System.out.println(groceries[i].amount);
             System.out.println(recipes.get(i).amounts[i]);*/
 
-            if (groceries[i].amount > recipes.get(i).amounts[i]) {
+            if (recipes.get(i).groceries[i].amount > recipes.get(i).amounts[i]) {
                 System.out.println(recipes.get(i).name);
             }
         }
@@ -73,5 +85,12 @@ public class Recipe {
 
         System.out.println("New item added!");
         return customRecipe;
+    }
+
+    @Override
+    public String toString() {
+        return  Arrays.toString(groceries) + ": " +
+                 Arrays.toString(amounts)
+                ;
     }
 }

@@ -3,8 +3,8 @@ import java.util.List;
 public class Grocery{
     String name;
     int amount;
-    //TODO this is a keyword you can use to make an easy todo list in your IDE
-    //FIXME this is a keyword that you can use to mark errors in your code to later fix
+/*    //TODO this is a keyword you can use to make an easy todo list in your IDE
+    //FIXME this is a keyword that you can use to mark errors in your code to later fix*/
     Grocery(String name, int amount){
         this.name = name;
         this.amount = amount;
@@ -25,7 +25,7 @@ public class Grocery{
 
     public String toString() {
         return
-                "product: " + name + '\t' +
+                "product: " + name + "\t\t" +
                 "amount:" + amount;
     }
     public static void printCabinetContents(List<Grocery> cabinet) {
