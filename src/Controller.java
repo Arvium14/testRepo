@@ -1,5 +1,5 @@
 public class Controller {
-    public static Recipe addRecipe(){
+    public static Recipe addRecipe() {
         System.out.println("What is the name of the recipe you want to add?");
         String answer = MyScanner.readString();
         System.out.println("How many ingredients does the recipe consist of?");
@@ -16,20 +16,22 @@ public class Controller {
 
         return new Recipe(answer, groceries, amounts);
     }
-    public static Grocery checkForGrocery(String name){
-        for (Grocery checked: Main.cabinet
+
+    public static Grocery checkForGrocery(String name) {
+        for (Grocery checked : Main.cabinet
         ) {
-            if (checked.name.equalsIgnoreCase(name)){
+            if (checked.name.equalsIgnoreCase(name)) {
                 return checked;
             }
         }
         return null;
     }
-    public static Grocery askForIngredient(){
+
+    public static Grocery askForIngredient() {
         System.out.println("What is the name of the ingredient?");
         String myIngredient = MyScanner.readString();
         Grocery maybeGrocery = checkForGrocery(myIngredient);
-        if (maybeGrocery == null){
+        if (maybeGrocery == null) {
             System.out.println("This grocery doesn't exist in our cabinet!");
             return askForIngredient();
         }

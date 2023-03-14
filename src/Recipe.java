@@ -38,8 +38,8 @@ public class Recipe {
     }
 
     public static void printRecipeList(List<Recipe> recipes) {
-        for (Recipe recipe: recipes
-             ) {
+        for (Recipe recipe : recipes
+        ) {
             System.out.println(recipe.name);
             Grocery[] recipeGroceries = recipe.groceries;
             int[] groceryAmounts = recipe.amounts;
@@ -48,22 +48,10 @@ public class Recipe {
                 System.out.println(recipeGroceries[i].name + ": " + groceryAmounts[i]);
             }
         }
-
-/*        for (int i = 0; i < recipes.size(); i++) {
-            System.out.println("For " + recipes.get(i).getName() + " you need:");
-            for (Grocery grocery: recipes.get(i).groceries
-                 ) {
-                System.out.println(grocery.name + ": " *//*+ recipes.get(i).amounts[i]*//*);
-                System.out.println(recipes.get(i).amounts[i]);
-            }
-        }*/
     }
 
     public static void printUsableRecipes(List<Recipe> recipes) {
         for (int i = 0; i < recipes.size(); i++) {
-
-/*            System.out.println(groceries[i].amount);
-            System.out.println(recipes.get(i).amounts[i]);*/
 
             if (recipes.get(i).groceries[i].amount > recipes.get(i).amounts[i]) {
                 System.out.println(recipes.get(i).name);
@@ -97,8 +85,7 @@ public class Recipe {
 
     @Override
     public String toString() {
-        return  Arrays.toString(groceries) + ": " +
-                 Arrays.toString(amounts)
-                ;
+        return Arrays.toString(groceries) + ": " +
+                Arrays.toString(amounts);
     }
 }

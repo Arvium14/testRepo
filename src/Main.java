@@ -1,10 +1,9 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     static List<Grocery> cabinet;
+
     public static void main(String[] args) throws InterruptedException {
         boolean cookingOrShopping = true;
 

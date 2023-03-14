@@ -11,6 +11,7 @@ public class Toast extends Recipe {
     public void listOfIngredients() {
         System.out.println("For toast, you need:\nBread: 2 \nButter: 1\n");
     }
+
     @Override
     public String toString() {
         return
